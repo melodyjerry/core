@@ -11,7 +11,7 @@ namespace Flarum\Http;
 
 use Dflydev\FigCookies\Modifier\SameSite;
 use Dflydev\FigCookies\SetCookie;
-use Flarum\Foundation\Application;
+use Flarum\Foundation\Config;
 use Illuminate\Support\Arr;
 
 class CookieFactory
@@ -52,19 +52,19 @@ class CookieFactory
     protected $samesite;
 
     /**
-     * @param Application $app
+     * @param Config $config
      */
-    public function __construct(Application $app)
+    public function __construct(Config $config)
     {
         // Parse the forum's base URL so that we can determine the optimal cookie settings
-        $url = parse_url(rtrim($app->url(), '/'));
+        $url = parse_url(rtrim($config->url(), '/'));
 
         // Get the cookie settings from the config or use the default values
-        $this->prefix = $app->config('cookie.name', 'flarum');
-        $this->path = $app->config('cookie.path', Arr::get($url, 'path') ?: '/');
-        $this->domain = $app->config('cookie.domain');
-        $this->secure = $app->config('cookie.secure', Arr::get($url, 'scheme') === 'https');
-        $this->samesite = $app->config('cookie.samesite');
+        $this->prefix = $config['cookie.name'] ?? 'flarum';
+        $this->path = $config['cookie.path'] ?? Arr::get($url, 'path') ?: '/';
+        $this->domain = $config['cookie.domain'];
+        $this->secure = $config['cookie.secure'] ?? Arr::get($url, 'scheme') === 'https';
+        $this->samesite = $config['cookie.samesite'];
     }
 
     /**
