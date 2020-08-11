@@ -26,11 +26,6 @@ export default class PostStream extends Component {
   }
 
   view() {
-    function fadeIn(vnode) {
-      if (!vnode.state.fadedIn) $(vnode.dom).hide().fadeIn();
-      vnode.state.fadedIn = true;
-    }
-
     let lastTime;
 
     const viewingEnd = this.stream.viewingEnd();
@@ -47,7 +42,6 @@ export default class PostStream extends Component {
         content = PostComponent ? PostComponent.component({ post }) : '';
 
         attrs.key = 'post' + post.id();
-        attrs.oncreate = fadeIn;
         attrs['data-time'] = time.toISOString();
         attrs['data-number'] = post.number();
         attrs['data-id'] = post.id();
@@ -75,7 +69,7 @@ export default class PostStream extends Component {
       }
 
       return (
-        <div className="PostStream-item" {...attrs}>
+        <div className="PostStream-item fade-in" {...attrs}>
           {content}
         </div>
       );
@@ -374,6 +368,10 @@ export default class PostStream extends Component {
    * @param {jQuery} $item
    */
   flashItem($item) {
-    $item.addClass('flash').one('animationend webkitAnimationEnd', () => $item.removeClass('flash'));
+    $item.addClass('flash').on('animationend webkitAnimationEnd', () => {
+      if (event.animationName === 'fadeIn') {
+        $item.removeClass('flash');
+      }
+    });
   }
 }
