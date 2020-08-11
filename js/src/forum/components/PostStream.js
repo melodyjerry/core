@@ -27,8 +27,8 @@ export default class PostStream extends Component {
 
   view() {
     function fadeIn(vnode) {
-      if (!vnode.fadedIn) $(vnode.dom).hide().fadeIn();
-      vnode.fadedIn = true;
+      if (!vnode.state.fadedIn) $(vnode.dom).hide().fadeIn();
+      vnode.state.fadedIn = true;
     }
 
     let lastTime;
