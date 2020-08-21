@@ -27,11 +27,11 @@ class InstalledApp implements AppInterface
     protected $container;
 
     /**
-     * @var array
+     * @var Config
      */
     protected $config;
 
-    public function __construct(Container $container, array $config)
+    public function __construct(Container $container, Config $config)
     {
         $this->container = $container;
         $this->config = $config;
@@ -47,7 +47,7 @@ class InstalledApp implements AppInterface
      */
     public function getRequestHandler()
     {
-        if ($this->inMaintenanceMode()) {
+        if ($this->config->inMaintenanceMode()) {
             return new MaintenanceModeHandler();
         } elseif ($this->needsUpdate()) {
             return $this->getUpdaterHandler();
@@ -67,11 +67,6 @@ class InstalledApp implements AppInterface
         $pipe->pipe(new RequestHandler($this->container));
 
         return $pipe;
-    }
-
-    private function inMaintenanceMode(): bool
-    {
-        return $this->config['offline'] ?? false;
     }
 
     private function needsUpdate(): bool
@@ -98,7 +93,7 @@ class InstalledApp implements AppInterface
 
     private function basePath(): string
     {
-        return parse_url($this->config['url'], PHP_URL_PATH) ?: '/';
+        return parse_url($this->config->url(), PHP_URL_PATH) ?: '/';
     }
 
     private function subPath($pathName): string
