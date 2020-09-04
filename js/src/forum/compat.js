@@ -12,6 +12,7 @@ import DiscussionListState from './states/DiscussionListState';
 import GlobalSearchState from './states/GlobalSearchState';
 import NotificationListState from './states/NotificationListState';
 import SearchState from './states/SearchState';
+import AffixedSidebar from './components/AffixedSidebar';
 import DiscussionPage from './components/DiscussionPage';
 import LogInModal from './components/LogInModal';
 import ComposerBody from './components/ComposerBody';
@@ -83,6 +84,7 @@ export default Object.assign(compat, {
   'states/GlobalSearchState': GlobalSearchState,
   'states/NotificationListState': NotificationListState,
   'states/SearchState': SearchState,
+  'components/AffixedSidebar': AffixedSidebar,
   'components/DiscussionPage': DiscussionPage,
   'components/LogInModal': LogInModal,
   'components/ComposerBody': ComposerBody,
