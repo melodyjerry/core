@@ -8,9 +8,11 @@ import DiscussionControls from './utils/DiscussionControls';
 import alertEmailConfirmation from './utils/alertEmailConfirmation';
 import UserControls from './utils/UserControls';
 import Pane from './utils/Pane';
+import ComposerState from './states/ComposerState';
 import DiscussionListState from './states/DiscussionListState';
 import GlobalSearchState from './states/GlobalSearchState';
 import NotificationListState from './states/NotificationListState';
+import PostStreamState from './states/PostStreamState';
 import SearchState from './states/SearchState';
 import AffixedSidebar from './components/AffixedSidebar';
 import DiscussionPage from './components/DiscussionPage';
@@ -80,9 +82,11 @@ export default Object.assign(compat, {
   'utils/alertEmailConfirmation': alertEmailConfirmation,
   'utils/UserControls': UserControls,
   'utils/Pane': Pane,
+  'states/ComposerState': ComposerState,
   'states/DiscussionListState': DiscussionListState,
   'states/GlobalSearchState': GlobalSearchState,
   'states/NotificationListState': NotificationListState,
+  'states/PostStreamState': PostStreamState,
   'states/SearchState': SearchState,
   'components/AffixedSidebar': AffixedSidebar,
   'components/DiscussionPage': DiscussionPage,
