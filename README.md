@@ -1,3 +1,6 @@
+
+https://discuss.flarum.org.cn/d/1246
+
 <p align="center"><img src="https://flarum.org/img/logo.png"></p>
 
 <p align="center">
