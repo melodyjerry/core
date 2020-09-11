@@ -1,4 +1,4 @@
-
+# Flarum 中文安装指南：
 https://discuss.flarum.org.cn/d/1246
 
 <p align="center"><img src="https://flarum.org/img/logo.png"></p>
